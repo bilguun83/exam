@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use Illuminate\Support\Facades\Auth;
 use Closure;
 
-class CheckGroup
+class CheckTeacher
 {
     /**
      * Handle an incoming request.
@@ -15,10 +15,10 @@ class CheckGroup
      */
     public function handle($request, Closure $next)
     {
-        if ($request->group_id = 1) {
-            return redirect('home');
-        }
-
-        return $next($request);
+         if (Auth::user()->group_id == 2) {
+            return $next($request);
+                     }
+  //echo Auth::user()->group_id;
+  return redirect('/');
     }
 }
