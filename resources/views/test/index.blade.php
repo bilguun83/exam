@@ -2,7 +2,7 @@
 
 @section('content')
 {{-- @if (Auth::check()) --}}
-    @if (Auth::user()->group_id==1)
+    {{-- @if (Auth::user()->group_id==2) --}}
         <h1>ALL test here</h1>    
         @if (count($tests)>=1)
 {{--         
@@ -60,9 +60,9 @@
                 </tr>
             </tfoot>
         </table>
-        @else
+        {{-- @else
             <p>No test Found</p>
-        @endif
+        @endif --}}
     
       
         

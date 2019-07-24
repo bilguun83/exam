@@ -10,7 +10,7 @@
               <a class="nav-link" href="#">Шалгалтын түүх<span class="sr-only">(current)</span></a>
             </li>
 
-            @if (Auth::user()->group_id==1)
+            @if (Auth::user()->group_id==2)
 
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Шалгалтууд</a>

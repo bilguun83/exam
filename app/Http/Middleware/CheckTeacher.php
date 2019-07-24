@@ -15,7 +15,7 @@ class CheckTeacher
      */
     public function handle($request, Closure $next)
     {
-         if (Auth::user()->group_id == 2) {
+         if (Auth::check() && Auth::user()->group_id == 2) {
             return $next($request);
                      }
   //echo Auth::user()->group_id;
