@@ -17,7 +17,6 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->integer('group_id')->default(1);
             $table->string('fname');
-            
             $table->string('lname');
             $table->string('school');
             $table->string('field');
