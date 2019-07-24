@@ -5,6 +5,7 @@
     {{-- @if (Auth::user()->group_id==2) --}}
         <h1>ALL test here</h1>    
         @if (count($tests)>=1)
+        <button type="button" class="btn btn-primary">Шалгалт нэмэх</button>
 {{--         
         <button class="btn btn-default"><i class="glyphicon glyphicon-refresh"></i>Дахин дуудах</button>
 
@@ -43,7 +44,9 @@
                         {{$test->section_id}}
                     </td>
                     <td>
-                        <button class='btn btn-success'>EDIT</button>
+                        <button class='btn btn-success'>Засах</button>
+                        <button type="button" class="btn btn-danger">Усатгах</button>
+                        <button type="button" class="btn btn-info">Дэлгэрэнгүй</button>
                     </td>
                 </tr>
             @endforeach
