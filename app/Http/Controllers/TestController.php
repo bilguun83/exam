@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Test;
-
+use App\Section;
 
 class TestController extends Controller
 {
@@ -24,7 +24,13 @@ class TestController extends Controller
 //        echo "hello";
 
             $tests= Test::all();
-            return view("test.index")->with('tests',$tests); 
+            $sections = Section::all();
+            return view("test.index")->with('tests',$tests)->with('sections',$sections); 
+    }
+
+    public function sections()
+    {
+        return $this->hasOne('App\Section');
     }
 
     /**
@@ -35,7 +41,7 @@ class TestController extends Controller
     public function create()
     {
         //
-        
+        echo "create function ";
     }
 
     /**
@@ -47,6 +53,7 @@ class TestController extends Controller
     public function store(Request $request)
     {
         //
+        return view("/");
     }
 
     /**

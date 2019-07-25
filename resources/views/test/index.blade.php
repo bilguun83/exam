@@ -5,8 +5,9 @@
     {{-- @if (Auth::user()->group_id==2) --}}
         <h1>ALL test here</h1>    
         @if (count($tests)>=1)
-        <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#exampleModal">Шалгалт нэмэх</button>
-        <button type="button" class="btn btn-success">Excel-ээс нэмэх</button>
+        <button type="button" class="btn btn-primary" >Шалгалт нэмэх</button>
+        <a  href="/admin/test/create">Шалгалт нэмэх URL</a>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Excel-ээс нэмэх</button>
         
 {{--         
         <button class="btn btn-default"><i class="glyphicon glyphicon-refresh"></i>Дахин дуудах</button>
@@ -43,7 +44,8 @@
                         {{$test->status}}
                     </td>
                     <td>
-                        {{$test->section_id}}
+                            
+                        {{App\Section::find($test->section_id)->name}}
                     </td>
                     <td>
                         <button class='btn btn-warning'>Засах</button>
@@ -65,6 +67,8 @@
                 </tr>
             </tfoot>
         </table>
+        {{-- <h1>{{$section = Test::find(1)->section->name}}</h1> --}}
+        
         {{-- @else
             <p>No test Found</p>
         @endif --}}
@@ -74,18 +78,33 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Шалгалт нэмэх</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
+            {{-- {!! Form::open(['action' => 'TestController@store', 'method' => 'POST']) !!} --}}
             <div class="modal-body">
-              ...
+                   
+                  
+                    <label for="section">MODAL aas add failed !!! Must learn</label>
+               
+                    <label for="section">Хэсэг</label>
+                    <select class="form-control" id="section">
+
+                            @foreach ($sections as $section)
+                            <option value='{{$section->id}}'>{{$section->name}}</option>
+ 
+                        @endforeach
+                    </select>
+                    <label for="usr">Нэр:</label>
+                    <input type="text" class="form-control" id="testname">
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-primary" action="TestController/store" method="Post">Save changes</button>
             </div>
+
           </div>
         </div>
       </div>
