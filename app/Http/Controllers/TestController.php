@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Test;
 use App\Section;
+//use DB;
 
 class TestController extends Controller
 {
@@ -23,7 +24,13 @@ class TestController extends Controller
         //
 //        echo "hello";
 
-            $tests= Test::all();
+            // $tests= Test::all(); //Select * from test
+            //$tests= Test::where('name','VHF')->get();
+            // $tests= DB::select('Select * from tests'); //use DB in declaration
+            //$tests= Test::orderBy('name','asc')->take(1)->get();
+            //$tests= Test::orderBy('name','asc')->get();
+            
+            $tests= Test::orderBy('name','asc')->paginate(1);
             $sections = Section::all();
             return view("test.index")->with('tests',$tests)->with('sections',$sections); 
     }
@@ -41,7 +48,8 @@ class TestController extends Controller
     public function create()
     {
         //
-        echo "create function ";
+        //echo "create function ";
+        return view('test.create');
     }
 
     /**
@@ -53,7 +61,8 @@ class TestController extends Controller
     public function store(Request $request)
     {
         //
-        return view("/");
+       
+        view("/");
     }
 
     /**
@@ -65,6 +74,8 @@ class TestController extends Controller
     public function show($id)
     {
         //
+        $test =Test::find($id);
+        return view('test.show')->with('test',$test);
     }
 
     /**

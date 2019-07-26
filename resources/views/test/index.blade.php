@@ -4,9 +4,13 @@
 {{-- @if (Auth::check()) --}}
     {{-- @if (Auth::user()->group_id==2) --}}
         <h1>ALL test here</h1>    
-        @if (count($tests)>=1)
-        <button type="button" class="btn btn-primary" >Шалгалт нэмэх</button>
-        <a  href="/admin/test/create">Шалгалт нэмэх URL</a>
+        @if (count($tests)>0)
+        
+        
+        {{-- <button type="button" class="btn btn-primary" onclick="window.location.href = '/admin/test/create';">Шалгалт нэмэх</button> --}}
+        {{--<a  href="/admin/test/create">Шалгалт нэмэх URL</a> --}}
+        {{-- diffrent oclick to url --}}
+        <a href="/admin/test/create" class="btn btn-primary">Шалгалт нэмэх</a>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Excel-ээс нэмэх</button>
         
 {{--         
@@ -16,6 +20,8 @@
 
         <button class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</button>
  --}}
+ <br><br>
+        {{$tests->links()}} 
             <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                     <tr>
@@ -32,7 +38,7 @@
                 <tr>
 
                     <td>
-                        {{$test->name}}
+                    <a href='/admin/test/{{$test->id}}'>{{$test->name}}</a>
                     </td>
                     <td>
                         {{$test->created_at}}
@@ -54,6 +60,7 @@
                     </td>
                 </tr>
             @endforeach
+            
             </tbody>
             <tfoot>
                 <tr>
@@ -67,6 +74,7 @@
                 </tr>
             </tfoot>
         </table>
+        {{$tests->links()}}
         {{-- <h1>{{$section = Test::find(1)->section->name}}</h1> --}}
         
         {{-- @else
