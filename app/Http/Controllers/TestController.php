@@ -49,7 +49,8 @@ class TestController extends Controller
     {
         //
         //echo "create function ";
-        return view('test.create');
+        $sections = Section::all();
+        return view('test.create')->with('sections',$sections);
     }
 
     /**
@@ -62,7 +63,16 @@ class TestController extends Controller
     {
         //
        
-        view("/");
+       $this->validate($request, [
+        'name'=>'required',
+        ]);
+        
+        //create test
+        $test = new Test;
+        $test->name =$request->input('name');
+        $test->section_id =$request->input('section_id');
+        $test->save();
+        return redirect('/admin/test')->with('success','Test Created');
     }
 
     /**

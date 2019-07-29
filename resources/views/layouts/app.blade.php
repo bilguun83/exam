@@ -13,24 +13,27 @@
     <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
-
+  
 
     <!-- Styles -->
+   
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     
     @if (Auth::check())
-    @include('inc.navbar')
+        @include('inc.navbar')
     @endif
-
-
-    <div id="app">
+{{-- 
+   <div id="app">
        
 
-        <main class="py-4">
+        <main class="py-4"> --}}
+        <div class="container">
+            @include('inc.messages')
             @yield('content')
-        </main>
-    </div>
+        </div>
+        {{-- </main>
+    </div> --}}
 </body>
 </html>

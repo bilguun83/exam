@@ -3,6 +3,7 @@
 @section('content')
 {{-- @if (Auth::check()) --}}
     {{-- @if (Auth::user()->group_id==2) --}}
+    
         <h1>ALL test here</h1>    
         @if (count($tests)>0)
         
