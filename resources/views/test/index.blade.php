@@ -59,17 +59,25 @@
                     <a href="/admin/test/{{$test->id}}/edit" class="btn btn-warning">Засах</a>
                     {!!Form::open(['action'=>['TestController@destroy',$test->id],'method'=>'POST'])!!}    
                         {{Form::hidden('_method','DELETE')}}
-                        {{Form::submit('Усатгах',['class'=>'btn btn-danger'])}}
+                        {{Form::submit('Усатгах',['class'=>'btn btn-danger','onclick'=>'return myFunction();'])}}
                     {!!Form::close()!!}
                     
                     {{-- <a href="/admin/test/create" class="btn btn-danger">Усатгах</a> --}}
-                        
+                    {{-- <a class="btn btn-danger" onclick="return myFunction();" href="{{route('city-delete', $result->my_id)}}"><i class="fa fa-trash"></i></a> --}}
+
+
 
                     </td>
                 </tr>
             @endforeach
             
             </tbody>
+            <script>
+                    function myFunction() {
+                        if(!confirm("Are You Sure to delete this"))
+                        event.preventDefault();
+                    }
+                   </script>
             <tfoot>
                 <tr>
 
