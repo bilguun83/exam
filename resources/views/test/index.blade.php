@@ -55,9 +55,16 @@
                         {{App\Section::find($test->section_id)->name}}
                     </td>
                     <td>
-                        <button class='btn btn-warning'>Засах</button>
-                        <button type="button" class="btn btn-danger">Усатгах</button>
-                        <button type="button" class="btn btn-info">Дэлгэрэнгүй</button>
+                    <a href="/admin/test/create" class="btn btn-info">Дэлгэрэнгүй</a>
+                    <a href="/admin/test/{{$test->id}}/edit" class="btn btn-warning">Засах</a>
+                    {!!Form::open(['action'=>['TestController@destroy',$test->id],'method'=>'POST'])!!}    
+                        {{Form::hidden('_method','DELETE')}}
+                        {{Form::submit('Усатгах',['class'=>'btn btn-danger'])}}
+                    {!!Form::close()!!}
+                    
+                    {{-- <a href="/admin/test/create" class="btn btn-danger">Усатгах</a> --}}
+                        
+
                     </td>
                 </tr>
             @endforeach

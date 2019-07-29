@@ -30,7 +30,7 @@ class TestController extends Controller
             //$tests= Test::orderBy('name','asc')->take(1)->get();
             //$tests= Test::orderBy('name','asc')->get();
             
-            $tests= Test::orderBy('name','asc')->paginate(1);
+            $tests= Test::orderBy('name','asc')->paginate(10);
             $sections = Section::all();
             return view("test.index")->with('tests',$tests)->with('sections',$sections); 
     }
@@ -97,6 +97,10 @@ class TestController extends Controller
     public function edit($id)
     {
         //
+        $test =Test::find($id);
+        $sections = Section::all();
+        
+        return view('test.edit')->with('test',$test)->with('sections',$sections);
     }
 
     /**
@@ -109,6 +113,16 @@ class TestController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'name'=>'required',
+            ]);
+            
+            //create test
+            $test = Test::find($id);
+            $test->name =$request->input('name');
+            $test->section_id =$request->input('section_id');
+            $test->save();
+            return redirect('/admin/test')->with('success','Test updated');
     }
 
     /**
@@ -120,5 +134,8 @@ class TestController extends Controller
     public function destroy($id)
     {
         //
+        $test = Test::find($id);
+        $test->delete();
+        return redirect('/admin/test')->with('success','Test deleted');
     }
 }
