@@ -13,6 +13,8 @@
         {{-- diffrent oclick to url --}}
         <a href="/admin/test/create" class="btn btn-primary">Шалгалт нэмэх</a>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Excel-ээс нэмэх</button>
+        <button type="button" class="btn btn-success" ><?php ?></button>
+        {{global_function_example('hello world')}}
         
 {{--         
         <button class="btn btn-default"><i class="glyphicon glyphicon-refresh"></i>Дахин дуудах</button>

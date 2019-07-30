@@ -8,7 +8,10 @@
             {{Form::text('name',$test->name,['class'=>'form-control'], ['placeholder'=>'name'] )}}
             {{Form::label('section','Хэсэг:')}}
             
-            <select name='section_id' placeholder='Хэсэг' class='form-control'>
+            {!!section_select($test->section_id)!!}
+
+            {{-- Select iig global function oos duudaj baigaa bolhoor bainga html bichih hereggui bolloo --}}
+            {{-- <select name='section_id' placeholder='Хэсэг' class='form-control'>
                 @foreach ($sections as $section)
                     @if ($section->id ==$test->section_id)
                         <option value='{{$section->id}}' selected>{{$section->name}}</option>    
@@ -18,7 +21,7 @@
                     
                
                 @endforeach
-            </select>
+            </select> --}}
             {{-- {{Form::select('Хэсэг', $sections,['class'=>'form-control','placeholder'=>'Хэсэг'])}} --}}
             {{-- PUT request yavuulj baina --}}
             {{Form::hidden('_method','PUT')}}

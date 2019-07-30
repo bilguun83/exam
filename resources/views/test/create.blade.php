@@ -8,16 +8,16 @@
             {{Form::text('name','',['class'=>'form-control'], ['placeholder'=>'name'] )}}
             {{Form::label('section','Хэсэг:')}}
             
-            <select name='section_id' placeholder='Хэсэг' class='form-control'>
+            {!!section_select(1)!!}
+            {{-- <select name='section_id' placeholder='Хэсэг' class='form-control'>
                 @foreach ($sections as $section)
                     <option value='{{$section->id}}'>{{$section->name}}</option>
                
                 @endforeach
-            </select>
+            </select> --}}
             {{-- {{Form::select('Хэсэг', $sections,['class'=>'form-control','placeholder'=>'Хэсэг'])}} --}}
             {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
         </div>
-
 
 
 

@@ -49,8 +49,7 @@ class TestController extends Controller
     {
         //
         //echo "create function ";
-        $sections = Section::all();
-        return view('test.create')->with('sections',$sections);
+        return view('test.create');
     }
 
     /**
@@ -98,9 +97,9 @@ class TestController extends Controller
     {
         //
         $test =Test::find($id);
-        $sections = Section::all();
         
-        return view('test.edit')->with('test',$test)->with('sections',$sections);
+        
+        return view('test.edit')->with('test',$test);
     }
 
     /**
