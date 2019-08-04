@@ -22,3 +22,7 @@ Route::get('/admin/admin', function () {
     return view('/admin/admin');
 });
 Route::resource('admin/test','TestController');
+
+Route::get('export', 'ExcelController@export')->name('export');
+Route::get('importExportView', 'ExcelController@importExportView');
+Route::post('import', 'TestController@store')->name('import');

@@ -16,4 +16,9 @@ class Test extends Model
 
         return $this->hasOne('App\Section');
          }
+    
+    public function Question()
+        {
+        return $this->hasMany('App\Question');
+        }
 }

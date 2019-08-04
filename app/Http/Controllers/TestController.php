@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Test;
 use App\Section;
-//use DB;
+use App\Question;
+use App\Answer;
+use App\Imports\QuestionImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class TestController extends Controller
 {
@@ -30,7 +34,7 @@ class TestController extends Controller
             //$tests= Test::orderBy('name','asc')->take(1)->get();
             //$tests= Test::orderBy('name','asc')->get();
             
-            $tests= Test::orderBy('name','asc')->paginate(10);
+            $tests= Test::orderBy('id','desc')->paginate(10);
             $sections = Section::all();
             return view("test.index")->with('tests',$tests)->with('sections',$sections); 
     }
@@ -47,8 +51,6 @@ class TestController extends Controller
      */
     public function create()
     {
-        //
-        //echo "create function ";
         return view('test.create');
     }
 
@@ -60,17 +62,40 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        
        
        $this->validate($request, [
         'name'=>'required',
+        'file' => 'required',
         ]);
+     
+        // create test
+
+        // $path = $request->file('file')->getRealPath();
+        // echo $path;
+        // $data = Excel::load($path)->get();
+ 
+        // if($data->count()){
+        //     foreach ($data as $key => $value) {
+        //         $arr[] = ['title' => $value->title, 'description' => $value->description];
+        //     }
+ 
+        //     if(!empty($arr)){
+        //         Question::insert($arr);
+
+
         
-        //create test
+        
+        
+        echo "here is -->".$request->file->path()."<--Some text";
         $test = new Test;
         $test->name =$request->input('name');
         $test->section_id =$request->input('section_id');
         $test->save();
+        Excel::import(new QuestionImport,request()->file('file'));
+
+        
         return redirect('/admin/test')->with('success','Test Created');
     }
 
@@ -137,4 +162,11 @@ class TestController extends Controller
         $test->delete();
         return redirect('/admin/test')->with('success','Test deleted');
     }
+
+    // public function excel() 
+    // {
+    //     Excel::import(new QuestionImport,request()->file('file'));
+           
+    //     return back();
+    // }
 }
