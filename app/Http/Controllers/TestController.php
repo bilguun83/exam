@@ -11,7 +11,6 @@ use App\Imports\QuestionImport;
 use App\Imports\Question1;
 use Maatwebsite\Excel\Facades\Excel;
 
-
 class TestController extends Controller
 {
     /**
@@ -26,9 +25,7 @@ class TestController extends Controller
     }
     public function index()
     {
-        //
-//        echo "hello";
-
+            // Example select
             // $tests= Test::all(); //Select * from test
             //$tests= Test::where('name','VHF')->get();
             // $tests= DB::select('Select * from tests'); //use DB in declaration
@@ -70,30 +67,11 @@ class TestController extends Controller
         'name'=>'required',
         'file' => 'required',
         ]);
-     
-        // create test
-
-        // $path = $request->file('file')->getRealPath();
-        // echo $path;
-        // $data = Excel::load($path)->get();
- 
-        // if($data->count()){
-        //     foreach ($data as $key => $value) {
-        //         $arr[] = ['title' => $value->title, 'description' => $value->description];
-        //     }
- 
-        //     if(!empty($arr)){
-        //         Question::insert($arr);
-
-
-        
-        
-        
-        echo "here is -->".$request->file->path()."<--Some text";
-        $test = new Test;
+             $test = new Test;
         $test->name =$request->input('name');
         $test->section_id =$request->input('section_id');
         $test->save();
+
         // Excel::import(new QuestionImport,request()->file('file'));
         Excel::import(new Question1,request()->file('file'));
        // Excel::import(new UsersImport, 'users.xlsx');
@@ -165,10 +143,4 @@ class TestController extends Controller
         return redirect('/admin/test')->with('success','Test deleted');
     }
 
-    // public function excel() 
-    // {
-    //     Excel::import(new QuestionImport,request()->file('file'));
-           
-    //     return back();
-    // }
 }
