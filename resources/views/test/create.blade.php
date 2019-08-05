@@ -2,25 +2,23 @@
 
 @section('content')
     <h1>Шалгалт нэмэх</h1>
-    {!!Form::open(['action'=>'TestController@store'],['method'=>'post']) !!}
-        <div class='form-group'>
-            {{Form::label('name','Нэр:')}}
-            {{Form::text('name','',['class'=>'form-control'], ['placeholder'=>'name'] )}}
-            {{Form::label('section','Хэсэг:')}}
-            
-            {!!section_select(1)!!}
-            {{-- <select name='section_id' placeholder='Хэсэг' class='form-control'>
-                @foreach ($sections as $section)
-                    <option value='{{$section->id}}'>{{$section->name}}</option>
-               
-                @endforeach
-            </select> --}}
-            {{-- {{Form::select('Хэсэг', $sections,['class'=>'form-control','placeholder'=>'Хэсэг'])}} --}}
-            {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
-        </div>
+    <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+        {{Form::label('name','Нэр:')}}
+        {{Form::text('name','',['class'=>'form-control'], ['placeholder'=>'name'])}}
+        {{Form::label('section','Хэсэг:')}}
+        
+        {!!section_select(1)!!}
+        <br>
+        {{Form::label('Questions','Асуултууд:')}}
+        
+        @csrf
 
+        <input type="file" name="file"/>
+        <br><br>
+        <button class="btn btn-success">Import User Data</button>
+    </form>
+   
+        
 
-
-    {!!Form::close()!!}
 @endsection
 
