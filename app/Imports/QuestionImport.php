@@ -24,4 +24,13 @@ class QuestionImport implements ToModel, WithHeadingRow
             'level'=> $row['level'], 
         ]);
     }
+    public function collection(Collection $rows)
+    {
+        foreach ($rows as $row) 
+        {
+            User::create([
+                'name' => $row[0],
+            ]);
+        }
+    }
 }

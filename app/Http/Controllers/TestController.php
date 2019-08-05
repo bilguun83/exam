@@ -8,6 +8,7 @@ use App\Section;
 use App\Question;
 use App\Answer;
 use App\Imports\QuestionImport;
+use App\Imports\Question1;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -93,8 +94,9 @@ class TestController extends Controller
         $test->name =$request->input('name');
         $test->section_id =$request->input('section_id');
         $test->save();
-        Excel::import(new QuestionImport,request()->file('file'));
-
+        // Excel::import(new QuestionImport,request()->file('file'));
+        Excel::import(new Question1,request()->file('file'));
+       // Excel::import(new UsersImport, 'users.xlsx');
         
         return redirect('/admin/test')->with('success','Test Created');
     }
