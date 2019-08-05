@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -18,6 +18,8 @@ class StudentController extends Controller
     public function index()
     {
         //
+        $students = User::orderBy('id','asc')->paginate(10);
+        return view("student.index")->with('students',$students); 
     }
 
     /**
@@ -61,6 +63,9 @@ class StudentController extends Controller
     public function edit($id)
     {
         //
+        $section =Section::find($id);
+        
+        return view('section.edit')->with('section',$section);
     }
 
     /**
