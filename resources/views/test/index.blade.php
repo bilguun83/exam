@@ -1,29 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- @if (Auth::check()) --}}
-    {{-- @if (Auth::user()->group_id==2) --}}
-    
-        <h1>ALL test here</h1>    
+
+<br>  
         @if (count($tests)>0)
         
-        
-        {{-- <button type="button" class="btn btn-primary" onclick="window.location.href = '/admin/test/create';">Шалгалт нэмэх</button> --}}
-        {{--<a  href="/admin/test/create">Шалгалт нэмэх URL</a> --}}
-        {{-- diffrent oclick to url --}}
+
         <a href="/admin/test/create" class="btn btn-primary">Шалгалт нэмэх</a>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Excel-ээс нэмэх</button>
-        <button type="button" class="btn btn-success" ><?php ?></button>
-        {{global_function_example('hello world')}}
-        
-{{--         
-        <button class="btn btn-default"><i class="glyphicon glyphicon-refresh"></i>Дахин дуудах</button>
-
-        <button id="deleteList" class="btn btn-danger" style="display: none;" ><i class="glyphicon glyphicon-trash"></i>Жагсаалтаар устгах</button>
-
-        <button class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</button>
- --}}
- <br><br>
+  <br><br>
         {{$tests->links()}} 
             <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
@@ -63,11 +48,7 @@
                         {{Form::hidden('_method','DELETE')}}
                         {{Form::submit('Усатгах',['class'=>'btn btn-danger','onclick'=>'return myFunction();'])}}
                     {!!Form::close()!!}
-                    
-                    {{-- <a href="/admin/test/create" class="btn btn-danger">Усатгах</a> --}}
-                    {{-- <a class="btn btn-danger" onclick="return myFunction();" href="{{route('city-delete', $result->my_id)}}"><i class="fa fa-trash"></i></a> --}}
-
-
+   
 
                     </td>
                 </tr>
@@ -93,11 +74,7 @@
             </tfoot>
         </table>
         {{$tests->links()}}
-        {{-- <h1>{{$section = Test::find(1)->section->name}}</h1> --}}
-        
-        {{-- @else
-            <p>No test Found</p>
-        @endif --}}
+ 
     
      {{-- MODAL starts here  --}}
      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -135,17 +112,7 @@
         </div>
       </div>
            
-                    
-                          
-                    
-            
-
-     
-
-    
-
-
-    @else
+     @else
         <h1>Permission denied</h1>
     @endif
 @endsection

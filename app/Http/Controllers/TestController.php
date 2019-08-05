@@ -25,7 +25,7 @@ class TestController extends Controller
     }
     public function index()
     {
-            // Example select
+            //  Example select
             // $tests= Test::all(); //Select * from test
             //$tests= Test::where('name','VHF')->get();
             // $tests= DB::select('Select * from tests'); //use DB in declaration
@@ -37,10 +37,10 @@ class TestController extends Controller
             return view("test.index")->with('tests',$tests)->with('sections',$sections); 
     }
 
-    public function sections()
-    {
-        return $this->hasOne('App\Section');
-    }
+    // public function sections()
+    // {
+    //     return $this->hasOne('App\Section');
+    // }
 
     /**
      * Show the form for creating a new resource.

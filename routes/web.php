@@ -22,6 +22,8 @@ Route::get('/admin/admin', function () {
     return view('/admin/admin');
 });
 Route::resource('admin/test','TestController');
+Route::resource('admin/section','SectionController');
+Route::resource('admin/student','StudentController');
 
 Route::get('export', 'ExcelController@export')->name('export');
 Route::get('importExportView', 'ExcelController@importExportView');

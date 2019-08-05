@@ -14,7 +14,7 @@
 
             @if (Auth::user()->group_id==2)
 
-              <li class="nav-item dropdown">
+              {{-- <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Шалгалтууд</a>
                   <div class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" href="/admin/test">Бүгд</a>
@@ -24,12 +24,16 @@
                     <a class="dropdown-item" href="#">Цахилгаан</a>
                     <a class="dropdown-item" href="#">Бусад</a>
                   </div>
-                </li>
-
+                </li> --}}
               <li >
-                  <a class="nav-link" href="/admin/admin">Шалгуулагчид<span class="sr-only">(current)</span></a>
-              
-                
+                  <a class="nav-link" href="/admin/test">Шалгалтууд<span class="sr-only">(current)</span></a>
+              </li>
+              <li >
+                  <a class="nav-link" href="/admin/student">Шалгуулагчид<span class="sr-only">(current)</span></a>
+              </li>
+              <li >
+                <a class="nav-link" href="/admin/section">Хэсэгүүд<span class="sr-only">(current)</span></a>
+            </li> 
             @endif
             <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
