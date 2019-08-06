@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+@csrf
 <br>
         @if (count($students)>0)
           {{$students->links()}} 
+          
             <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <thead>
+                <thead class='thead-danger'>
                     <tr>
                         <th>Овог</th>
                         <th>Нэр</th>
@@ -48,8 +50,9 @@
                         {{$student->group_id}}
                     </td>
                     <td>
-                        <a href="/admin/student/{{$student->id}}/edit" class="btn btn-warning">Засах</a>
+                       
                         {!!Form::open(['action'=>['StudentController@destroy',$student->id],'method'=>'POST'])!!}    
+                        <a href="/admin/student/{{$student->id}}/edit" class="btn btn-warning">Засах</a>
                         {{Form::hidden('_method','DELETE')}}
                         {{Form::submit('Усатгах',['class'=>'btn btn-danger','onclick'=>'return myFunction();'])}}
                         {!!Form::close()!!}
@@ -79,6 +82,7 @@
                 </tr>
             </tfoot>
         </table>
+          
         {{$students->links()}}
 
     @else

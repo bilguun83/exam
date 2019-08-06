@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@csrf
     <h1>Шалгалт засах</h1>
     {!!Form::open(['action'=>['TestController@update',$test->id],'method'=>'post']) !!}
         <div class='form-group'>

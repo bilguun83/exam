@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -63,9 +64,9 @@ class StudentController extends Controller
     public function edit($id)
     {
         //
-        $section =Section::find($id);
+        $student =User::find($id);
         
-        return view('section.edit')->with('section',$section);
+        return view('student.edit')->with('student',$student);
     }
 
     /**
@@ -78,6 +79,32 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'lname'=>'required',
+            'fname'=>'required',
+            'school'=>'required', 
+            'field'=>'required', 
+            'degree'=>'required', 
+            'position'=>'required', 
+            'email'=>'required', 
+            
+            ]);
+            
+            $student = User::find($id);
+            $student->fname =$request->input('fname');
+            $student->lname =$request->input('lname');
+            $student->school =$request->input('school');
+            $student->field =$request->input('field');
+            $student->degree =$request->input('degree');
+            $student->position =$request->input('position');
+            $student->email =$request->input('email');
+             if ($request->input('password')!=NULL)
+            $student->password =Hash::make($request->input('password'));
+            $student->group_id=$request->input('group');
+            
+
+            $student->save();
+            return redirect('/admin/student')->with('success','Хэрэглэгчийн мэдээллийг шинэчиллээ');
     }
 
     /**

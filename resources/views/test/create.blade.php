@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@csrf
     <h1>Шалгалт нэмэх</h1>
     <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
         {{Form::label('name','Нэр:')}}

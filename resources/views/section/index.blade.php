@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@csrf
 <br>
         @if (count($sections)>0)
         <a href="/admin/section/create" class="btn btn-primary">Хэсэг нэмэх</a>
@@ -32,8 +33,9 @@
                     </td>
                   
                     <td>
-                        <a href="/admin/section/{{$section->id}}/edit" class="btn btn-warning">Засах</a>
+                        
                         {!!Form::open(['action'=>['SectionController@destroy',$section->id],'method'=>'POST'])!!}    
+                        <a href="/admin/section/{{$section->id}}/edit" class="btn btn-warning">Засах</a>
                         {{Form::hidden('_method','DELETE')}}
                         {{Form::submit('Усатгах',['class'=>'btn btn-danger','onclick'=>'return myFunction();'])}}
                         {!!Form::close()!!}
