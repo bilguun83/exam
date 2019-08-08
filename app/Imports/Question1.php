@@ -28,6 +28,7 @@ class Question1 implements ToCollection
                             'answer'=>$row[$x],
                             'question_id'=> $data->id, 
                             'score'=>'1',
+                            'test_id'=> $test->id, 
                         ]);
                     }
                     else{
@@ -35,6 +36,7 @@ class Question1 implements ToCollection
                             'answer'=>$row[$x],
                             'question_id'=> $data->id,
                             'score'=>'0',
+                            'test_id'=> $test->id, 
                         ]);
                     }
                 }

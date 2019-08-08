@@ -28,3 +28,4 @@ Route::resource('admin/student','StudentController');
 Route::get('export', 'ExcelController@export')->name('export');
 Route::get('importExportView', 'ExcelController@importExportView');
 Route::post('import', 'TestController@store')->name('import');
+Route::get('/admin/test/{test}/view', 'TestController@view');

@@ -3,12 +3,13 @@
 @section('content')
 @csrf
 <br>  
-        @if (count($tests)>0)
+        
         
 
         <a href="/admin/test/create" class="btn btn-primary">Шалгалт нэмэх</a>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Excel-ээс нэмэх</button>
   <br><br>
+  @if (count($tests)>0)
         {{$tests->links()}} 
             <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
@@ -44,7 +45,7 @@
                     <td>
                    
                     {!!Form::open(['action'=>['TestController@destroy',$test->id],'method'=>'POST'])!!} 
-                    <a href="/admin/test/create" class="btn btn-info">Дэлгэрэнгүй</a>
+                    <a href="/admin/test/{{$test->id}}/view" class="btn btn-info">Дэлгэрэнгүй</a>
                     <a href="/admin/test/{{$test->id}}/edit" class="btn btn-warning">Засах</a>   
                         {{Form::hidden('_method','DELETE')}}
                         {{Form::submit('Усатгах',['class'=>'btn btn-danger','onclick'=>'return myFunction();'])}}
@@ -114,7 +115,7 @@
       </div>
            
      @else
-        <h1>Permission denied</h1>
+        <h1>Шалгалт байхгүй</h1>
     @endif
 @endsection
 

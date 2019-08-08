@@ -108,7 +108,7 @@
 
             <div class="col-md-6">
                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password">
-
+                <p class="text-sm-left text-info">Нууц үгийг солихгүй бол хоосон үлдээнэ үү.</p>
                 
             </div>
         </div>

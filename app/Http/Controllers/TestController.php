@@ -142,5 +142,11 @@ class TestController extends Controller
         $test->delete();
         return redirect('/admin/test')->with('success','Test deleted');
     }
-
+    public function view($id)
+    {
+        //
+     //   echo $id;
+     $test =Test::find($id);
+    return view('test.view')->with('test',$test);
+    }
 }

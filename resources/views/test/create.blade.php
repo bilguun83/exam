@@ -16,7 +16,7 @@
 
         <input type="file" name="file"/>
         <br><br>
-        <button class="btn btn-success">Import User Data</button>
+        <button class="btn btn-success">Шалгалт нэмэх</button>
     </form>
    
         
