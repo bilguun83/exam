@@ -7,7 +7,7 @@
         
 
         <a href="/admin/test/create" class="btn btn-primary">Шалгалт нэмэх</a>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Excel-ээс нэмэх</button>
+        {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Modal-ээс нэмэх</button> --}}
   <br><br>
   @if (count($tests)>0)
         {{$tests->links()}} 
@@ -77,43 +77,7 @@
         </table>
         {{$tests->links()}}
  
-    
-     {{-- MODAL starts here  --}}
-     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Шалгалт нэмэх</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            {{-- {!! Form::open(['action' => 'TestController@store', 'method' => 'POST']) !!} --}}
-            <div class="modal-body">
-                   
-                  
-                    <label for="section">MODAL aas add failed !!! Must learn</label>
-               
-                    <label for="section">Хэсэг</label>
-                    <select class="form-control" id="section">
-
-                            @foreach ($sections as $section)
-                            <option value='{{$section->id}}'>{{$section->name}}</option>
- 
-                        @endforeach
-                    </select>
-                    <label for="usr">Нэр:</label>
-                    <input type="text" class="form-control" id="testname">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" action="TestController/store" method="Post">Save changes</button>
-            </div>
-
-          </div>
-        </div>
-      </div>
-           
+              
      @else
         <h1>Шалгалт байхгүй</h1>
     @endif

@@ -25,7 +25,9 @@ Route::resource('admin/test','TestController');
 Route::resource('admin/section','SectionController');
 Route::resource('admin/student','StudentController');
 
-Route::get('export', 'ExcelController@export')->name('export');
-Route::get('importExportView', 'ExcelController@importExportView');
+// Route::get('export', 'ExcelController@export')->name('export');
+// Route::get('importExportView', 'ExcelController@importExportView');
 Route::post('import', 'TestController@store')->name('import');
 Route::get('/admin/test/{test}/view', 'TestController@view');
+Route::resource('/profile','UserController');
+Route::resource('/question','QuestionController');

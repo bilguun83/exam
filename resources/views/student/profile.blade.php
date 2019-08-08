@@ -2,8 +2,11 @@
 
 @section('content')
 @csrf
+@if ($student->id==Auth::user()->id)
+    
+
     <h1>Шалгуулагчийн мэдээлэл засах</h1>
-    {!!Form::open(['action'=>['StudentController@update',$student->id],'method'=>'post']) !!}
+    {!!Form::open(['action'=>['UserController@update',$student->id],'method'=>'post']) !!}
 
         <div class="form-group row">
             <label for="lname" class="col-md-4 col-form-label text-md-right">{{ __('Овог') }}</label>
@@ -107,29 +110,14 @@
             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
             <div class="col-md-6">
-                <input id="password" aria-describedby="pwinfo" type="password" class="form-control @error('password') is-invalid @enderror" name="password">
-                <small id="pwinfo" class="form-text text-muted">Нууц үгийг солихгүй бол хоосон үлдээнэ үү.</small>
-                                
+                    <input id="password" aria-describedby="pwinfo" type="password" class="form-control @error('password') is-invalid @enderror" name="password">
+                    <small id="pwinfo" class="form-text text-muted">Нууц үгийг солихгүй бол хоосон үлдээнэ үү.</small>
+                
             </div>
         </div>
-
-        <div class="form-group row">
-            <label for="group" class="col-md-4 col-form-label text-md-right">Эрх</label>
-
-            <div class="col-md-6">
-                <select name='group'>
-                    @if ($student->group_id==2)
-                        <option value="1">Шалгуулагч</option>
-                        <option value="2" selected>Багш</option>    
-                    @else
-                        <option value="1" selected>Шалгуулагч</option>
-                        <option value="2" >Багш</option>
-                    @endif
-                    
-                </select>
-            </div>
-        </div>
-
+       
+    
+           
         <div class="form-group row mb-0">
             <div class="col-md-6 offset-md-4">
                 <button type="submit" class="btn btn-primary">
@@ -138,6 +126,9 @@
             </div>
         </div>
         {{Form::hidden('_method','PUT')}}
-
+        <br>
         {{Form::close()}}
+        @else
+        <h1>Permission DENIED</h1>
+        @endif
 @endsection

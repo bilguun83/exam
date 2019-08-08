@@ -67,7 +67,7 @@ class TestController extends Controller
         'name'=>'required',
         'file' => 'required',
         ]);
-             $test = new Test;
+        $test = new Test;
         $test->name =$request->input('name');
         $test->section_id =$request->input('section_id');
         $test->save();

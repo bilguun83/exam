@@ -8,7 +8,7 @@
         {{Form::label('name','Нэр:')}}
         {{Form::text('name','',['class'=>'form-control'], ['placeholder'=>'name'])}}
         <br><br>
-        <button class="btn btn-success">Оруулах</button>
+        <button class="btn btn-success" type='submit'>Оруулах</button>
     </form>
    
         
