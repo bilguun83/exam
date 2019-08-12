@@ -47,7 +47,6 @@ class QuestionController extends Controller
      
         $question = new Question;
         $question->question =$request->input('newquestion');
-        $question->level =$request->input('level');
         $question->test_id =input('test_id');
         $question->save();
     

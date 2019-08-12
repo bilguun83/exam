@@ -37,6 +37,9 @@
                 <td>
                   {{$qlist->question}} 
                 </td>
+                <td>
+                  {{$qlist->level}} 
+                </td>
               </tr>
             </table>
           </div>
@@ -83,23 +86,15 @@
                   <table class="table">
                     <thead>
                       <tr>
-                      <th style="width: 70%">Асуулт </th>
-                      <th>Ангилал</th>
+                      <th>Асуулт </th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td style="width: 70%">
+                        <td>
                             <textarea class="form-control" name="newquestion">
                             </textarea>
                         </td>
-                       
-
-                        <td>
-                          @include('inc.level')
-                         
-                        </td>
-                          
                       </tr>
                     </tbody>
                   </table>
