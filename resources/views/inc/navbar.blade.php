@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
           <ul class="navbar-nav mr-auto">
             <li >
-              <a class="nav-link" href="/importExportView">Шалгалтын түүх<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/demo">Шалгалтын түүх<span class="sr-only">(current)</span></a>
             </li>
 
             @if (Auth::user()->group_id==2)

@@ -1,3 +1,32 @@
+ 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
+
+<script>  
+  $(document).ready(function(){  
+      var i=1;  
+      $('#add').click(function(){  
+           i++;  
+           $('#dynamic_field').append('<tr id="row'+i+'"><td><input type="text" name="answer[]" placeholder="Асуултаа оруулна уу" class="form-control name_list" /></td><td><button type="button" name="усатгах" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+      });  
+      $(document).on('click', '.btn_remove', function(){  
+           var button_id = $(this).attr("id");   
+           $('#row'+button_id+'').remove();  
+      });  
+      $('#submit').click(function(){            
+           $.ajax({  
+                url:"name.php",  
+                method:"POST",  
+                data:$('#add_name').serialize(),  
+                success:function(data)  
+                {  
+                     alert(data);  
+                     $('#add_name')[0].reset();  
+                }  
+           });  
+      });  
+  });  
+  </script>
 @extends('layouts.app')
 
 @section('content')
@@ -7,23 +36,6 @@
     Асуулт нэмэх
   </button>
     <br><br>
-    {{-- <div id="accordion">
-        <div class="card">
-          <div class="card-header" id="headingOne">
-            <h5 class="mb-0">
-              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-            sdfdas
-              </button>
-            </h5>
-          </div>
-      
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body">
-              HARIULTUUD HERE
-            </div>
-          </div>
-        </div>
-    </div> --}}
     <?php $pos=1; ?>
     @foreach ($test->question as $qlist)
       <div id="accordion{{$qlist->id}}">
@@ -37,9 +49,6 @@
                 <td>
                   {{$qlist->question}} 
                 </td>
-                <td>
-                  {{$qlist->level}} 
-                </td>
               </tr>
             </table>
           </div>
@@ -52,9 +61,15 @@
                     <th scope="row"  style="width:10px;">
                       {{$pos1}}.&nbsp;
                     </th>
-                    <td>
-                      {{$alist->answer}} 
-                    </td>
+                    @if ($alist->score==1)
+                      <td class="table-success">
+                        {{$alist->answer}} 
+                      </td>        
+                    @else
+                      <td>
+                        {{$alist->answer}} 
+                      </td>    
+                    @endif
                   </tr>
                 </table>
                 <?php $pos1++; ?>
@@ -83,12 +98,8 @@
             <div class="modal-body">
                 <input type="hidden" id="test_id" name="test_id" value="{{$test->id}}">
                 <div class="form-group">
+                  <h3> Асуулт:</h3>
                   <table class="table">
-                    <thead>
-                      <tr>
-                      <th>Асуулт </th>
-                      </tr>
-                    </thead>
                     <tbody>
                       <tr>
                         <td>
@@ -98,6 +109,14 @@
                       </tr>
                     </tbody>
                   </table>
+                  <h3> Хариултууд:</h3>
+                  <table class="table table-bordered" id="dynamic_field">  
+                    <tr>  
+                         <td><input type="text" name="answer[]" placeholder="Хариултаа оруулна уу" class="form-control name_list" /></td>  
+    
+                         <td><button type="button" name="add" id="add" class="btn btn-success">Хариулт нэмэх</button></td>  
+                    </tr>  
+               </table>  
                 </div>
               
             </div>

@@ -43,18 +43,35 @@ class QuestionController extends Controller
         $this->validate($request, [
             'newquestion'=>'required',
             ]);
-     //   echo "Asuult: ".$request->newquestion."<br>Level: ".$request->level."<br>Testid: ".$request->test_id;
-     
-        $question = new Question;
-        $question->question =$request->input('newquestion');
-        $question->test_id =input('test_id');
-        $question->save();
+    echo "Asuult: ".$request->newquestion."<br>Testid: ".$request->test_id;
+    $number = count($request["answer"]);
+    echo "<br>hariultuud: ".$number."<br>";
+
+    if($number > 0)  
+    {  
+      for($i=0; $i<$number; $i++)  
+      {  
+           if(trim($request["answer"][$i] != ''))  
+           {  
+                echo 'answer: '.$request["answer"][$i].'<br>';
+           }  
+      }  
+      }  
+    else  
+    {  
+      echo "Please Enter Name";  
+    }
+    //     $question = new Question;
+    //     $question->question =$request->input('newquestion');
+    //     $question->test_id =$request->input('test_id');
+    //     $question->save();
     
-        //     // Excel::import(new QuestionImport,request()->file('file'));
-        //     Excel::import(new Question1,request()->file('file'));
-        //    // Excel::import(new UsersImport, 'users.xlsx');
+    //     //     // Excel::import(new QuestionImport,request()->file('file'));
+    //     //     Excel::import(new Question1,request()->file('file'));
+    //     //    // Excel::import(new UsersImport, 'users.xlsx');
             
-        //     return redirect('/admin/test')->with('success','Test Created');
+    //  //return redirect('/admin/test')->with('success','Test Created');
+    //  return back()->with('success','Test Created');
     }
 
     /**
