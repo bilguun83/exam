@@ -12,6 +12,8 @@
               <a class="nav-link" href="/demo">Шалгалтын түүх<span class="sr-only">(current)</span></a>
             </li>
 
+            <!-- include('teacher-menu') -->
+
             @if (Auth::user()->group_id==2)
 
               {{-- <li class="nav-item dropdown">
@@ -35,6 +37,7 @@
                 <a class="nav-link" href="/admin/section">Хэсэгүүд<span class="sr-only">(current)</span></a>
             </li> 
             @endif
+
             <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
               </li>

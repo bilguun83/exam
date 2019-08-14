@@ -10,7 +10,7 @@
         {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Modal-ээс нэмэх</button> --}}
   <br><br>
   @if (count($tests)>0)
-        {{$tests->links()}} 
+        {{$tests->links()}}
             <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                     <tr>

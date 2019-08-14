@@ -6,7 +6,7 @@
     {!!Form::open(['action'=>['TestController@update',$test->id],'method'=>'post']) !!}
         <div class='form-group'>
             {{Form::label('name','Нэр:')}}
-            {{Form::text('name',$test->name,['class'=>'form-control'], ['placeholder'=>'name'] )}}
+            {{Form::text('name',$test->name,['class'=>'form-control', 'placeholder'=>'name'] )}}
             {{Form::label('section','Хэсэг:')}}
             
             {!!section_select($test->section_id)!!}
@@ -15,7 +15,7 @@
             {{-- <select name='section_id' placeholder='Хэсэг' class='form-control'>
                 @foreach ($sections as $section)
                     @if ($section->id ==$test->section_id)
-                        <option value='{{$section->id}}' selected>{{$section->name}}</option>    
+                        <option value='{{$section->id}}' selected>{{ $section ? $section->name : 'TEST' }}</option>
                     @else
                         <option value='{{$section->id}}'>{{$section->name}}</option>    
                     @endif

@@ -6,6 +6,16 @@
     
 
     <h1>Шалгуулагчийн мэдээлэл засах</h1>
+
+    <form>
+        
+        @csrf_token
+
+
+        <!-- ... -->
+
+    </form>
+
     {!!Form::open(['action'=>['UserController@update',$student->id],'method'=>'post']) !!}
 
         <div class="form-group row">

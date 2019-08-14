@@ -32,9 +32,14 @@ class TestController extends Controller
             //$tests= Test::orderBy('name','asc')->take(1)->get();
             //$tests= Test::orderBy('name','asc')->get();
             
-            $tests= Test::orderBy('id','desc')->paginate(10);
+            $tests = Test::orderBy('id','desc')->paginate(10);
             $sections = Section::all();
-            return view("test.index")->with('tests',$tests)->with('sections',$sections); 
+
+            // return view("test.index")->with('tests',$tests)->with('sections',$sections); 
+            return view("test.index")->with([
+                'tests' => $tests,
+                'sections' => $sections
+            ]);
     }
 
     // public function sections()
@@ -67,6 +72,7 @@ class TestController extends Controller
         'name'=>'required',
         'file' => 'required',
         ]);
+
         $test = new Test;
         $test->name =$request->input('name');
         $test->section_id =$request->input('section_id');
@@ -88,7 +94,10 @@ class TestController extends Controller
     public function show($id)
     {
         //
-        $test =Test::find($id);
+        // $test =Test::find($id);
+
+        $test = Test::findOrFail($id);
+
         return view('test.show')->with('test',$test);
     }
 
