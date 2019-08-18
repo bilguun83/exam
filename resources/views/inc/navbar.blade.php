@@ -8,9 +8,9 @@
       
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
           <ul class="navbar-nav mr-auto">
-            <li >
+            {{-- <li >
               <a class="nav-link" href="/demo">Шалгалтын түүх<span class="sr-only">(current)</span></a>
-            </li>
+            </li> --}}
 
             <!-- include('teacher-menu') -->
 
@@ -37,10 +37,10 @@
                 <a class="nav-link" href="/admin/section">Хэсэгүүд<span class="sr-only">(current)</span></a>
             </li> 
             @endif
-
+{{-- 
             <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-              </li>
+              </li> --}}
             
 
           </ul>
@@ -62,15 +62,16 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/profile/{{Auth::user()->id}}/edit" >Хувийн мэдээлэл засах</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>  
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
-                            <a class="dropdown-item" href="/profile/{{Auth::user()->id}}/edit" >Хувийн мэдээлэл засах</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
+                            
                         </div>
                     </li>
                 @endguest

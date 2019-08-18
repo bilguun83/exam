@@ -31,4 +31,5 @@ Route::post('import', 'TestController@store')->name('import');
 Route::get('/admin/test/{test}/view', 'TestController@view');
 Route::resource('/profile','UserController');
 Route::resource('/question','QuestionController');
-Route::view('/demo', 'test.demo');
+// Route::view('/demo', 'test.demo');
+Route::get('request/{id}', 'ExamController@request');

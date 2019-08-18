@@ -13,8 +13,13 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                        @if (Auth::user()->group_id==1)
 
-                    You are logged in!
+                        @include('user.index')
+                    @else
+                        Teacher logged in!
+                    
+                    @endif  
                 </div>
             </div>
         </div>

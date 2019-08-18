@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Section;
 use App\Question;
+use App\Answer;
 class QuestionController extends Controller
 {
     /**
@@ -43,35 +44,35 @@ class QuestionController extends Controller
         $this->validate($request, [
             'newquestion'=>'required',
             ]);
-    echo "Asuult: ".$request->newquestion."<br>Testid: ".$request->test_id;
+        $question = new Question;
+        $question->question =$request->input('newquestion');
+        $question->test_id =$request->input('test_id');
+        $question->save();   
+        //echo "Selected RAdio is:".$request->correct."<br>";
     $number = count($request["answer"]);
-    echo "<br>hariultuud: ".$number."<br>";
 
     if($number > 0)  
     {  
       for($i=0; $i<$number; $i++)  
       {  
-           if(trim($request["answer"][$i] != ''))  
+           if($request["answer"][$i] != '')  
            {  
-                echo 'answer: '.$request["answer"][$i].'<br>';
+               
+            $answer = new Answer;
+            $answer->answer =$request["answer"][$i];
+            $answer->question_id =$question->id;
+            if ($request->correct==$i+1)
+            $answer->score =1;
+            $answer->save();   
+        //   echo "Ansswer:".$i.": ".$request["answer"][$i]."<br>";
+   
            }  
       }  
       }  
-    else  
-    {  
-      echo "Please Enter Name";  
-    }
-    //     $question = new Question;
-    //     $question->question =$request->input('newquestion');
-    //     $question->test_id =$request->input('test_id');
-    //     $question->save();
-    
-    //     //     // Excel::import(new QuestionImport,request()->file('file'));
-    //     //     Excel::import(new Question1,request()->file('file'));
-    //     //    // Excel::import(new UsersImport, 'users.xlsx');
-            
+
+
     //  //return redirect('/admin/test')->with('success','Test Created');
-    //  return back()->with('success','Test Created');
+    return back()->with('success','Асуулт нэмэгдлээ');
     }
 
     /**

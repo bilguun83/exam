@@ -9,7 +9,7 @@
 
     <form>
         
-        @csrf_token
+   
 
 
         <!-- ... -->
