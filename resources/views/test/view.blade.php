@@ -7,7 +7,7 @@
       var i=1;  
       $('#add').click(function(){  
            i++;  
-           $('#dynamic_field').append('<tr id="row'+i+'"><td style="width:10px;"><input type="radio" name="correct" value="'+i+'"></td><td><input type="text" name="answer[]" placeholder="Асуултаа оруулна уу" class="form-control name_list" /></td><td style="width:10px;"><button type="button" name="усатгах" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+           $('#dynamic_field').append('<tr id="row'+i+'"><td><input type="text" name="answer[]" placeholder="Хариултаа оруулна уу" class="form-control name_list" /></td><td style="width:10px;"><button type="button" name="усатгах" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
       });  
       $(document).on('click', '.btn_remove', function(){  
            var button_id = $(this).attr("id");   
@@ -50,7 +50,10 @@
                 <td data-toggle="collapse" data-target="#collapse{{$qlist->id}}" aria-expanded="false" aria-controls="collapse{{$qlist->id}}">
                   {{$qlist->question ?: 'DB error!!!'}} 
                 </td>
-                <td style="width:15px;"><button type="button" name="answeradd" id="answeradd" class="btn btn-success" data-toggle="modal" data-target="#questionmodal">+</button></td>  
+                <td style="width:80px;">
+                  
+                  <img src='{{ URL::to('/') }}/images/add.png' alt="Нэмэх" data-toggle="modal" data-target="#questionmodal">
+                  <img src='{{ URL::to('/') }}/images/edit.png' alt="Засах"></td>
               </tr>
             </table>
           </div>
@@ -86,7 +89,7 @@
     
 
       
-      <!-- Modal -->
+      <!-- Modal  Asuult Hariult nemdeg-->
       <div class="modal fade bd-example-modal-xl" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
@@ -114,15 +117,15 @@
 
                   <table class="table table-bordered" id="dynamic_field"> 
                     <tr>
-                      <th></th>
+               
                       <th>Хариулт</th>
                       <th></th>
                     </tr> 
                     <tr>  
-                      <td style="width:10px;"><input type="radio" name="correct" value="1"></td>                        
-                      <td>
-                          <input type="text" name="answer[]" placeholder="Хариултаа оруулна уу" class="form-control name_list" /></td>  
+                        <td>
+                          <input type="text" name="answer[]" placeholder="Зөв хариултаа оруулна уу" class="form-control name_list" /></td>  
                          <td style="width:10px;"><button type="button" name="add" id="add" class="btn btn-success">+</button></td>  
+                         
                     </tr>  
                </table>  
                 </div>
@@ -136,6 +139,7 @@
           </div>
         </div>
       </div>
+      
       <!-- Question Modal -->
 <div class="modal fade" id="questionmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

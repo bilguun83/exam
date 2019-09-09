@@ -61,7 +61,7 @@ class QuestionController extends Controller
             $answer = new Answer;
             $answer->answer =$request["answer"][$i];
             $answer->question_id =$question->id;
-            if ($request->correct==$i+1)
+            if ($i==0)
             $answer->score =1;
             $answer->save();   
         //   echo "Ansswer:".$i.": ".$request["answer"][$i]."<br>";
