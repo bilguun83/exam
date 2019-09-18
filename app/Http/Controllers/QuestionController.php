@@ -95,7 +95,10 @@ class QuestionController extends Controller
     public function edit($id)
     {
         //
+        $question =Question::find($id);
+        return view('question.edit')->with('question',$question);
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -107,6 +110,16 @@ class QuestionController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'question'=>'required',
+            ]);
+            
+            //answer create test
+            $question = question::find($id);
+            $question->question =$request->input('question');
+            
+            $question->save();
+            return redirect('/admin/test/'.$question->test_id.'/view')->with('success','Question updated');
     }
 
     /**
@@ -118,5 +131,13 @@ class QuestionController extends Controller
     public function destroy($id)
     {
         //
+        $question = Question::find($id);
+        $question->answer()->delete();
+        $question->delete();
+        
+        return back()->with('success','Асуулт хасагдлаа');
+//        redirect('/admin/test')->with('success','Test deleted');
     }
+ 
+
 }

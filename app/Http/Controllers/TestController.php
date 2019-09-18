@@ -148,6 +148,8 @@ class TestController extends Controller
     {
         //
         $test = Test::find($id);
+        $test->answer()->delete();
+        $test->question()->delete();
         $test->delete();
         return redirect('/admin/test')->with('success','Test deleted');
     }

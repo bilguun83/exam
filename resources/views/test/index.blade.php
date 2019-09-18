@@ -49,7 +49,7 @@
                     <a href="/admin/test/{{$test->id}}/edit" class="btn btn-warning">Засах</a>   
                         {{Form::hidden('_method','DELETE')}}
                         {{Form::submit('Усатгах',['class'=>'btn btn-danger','onclick'=>'return myFunction();'])}}
-                    {!!Form::close()!!}
+                    {!!Form::close()!!} 
    
 
                     </td>
@@ -62,7 +62,7 @@
                         if(!confirm("Are You Sure to delete this"))
                         event.preventDefault();
                     }
-                   </script>
+            </script>
             <tfoot>
                 <tr>
 

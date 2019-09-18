@@ -50,10 +50,20 @@
                 <td data-toggle="collapse" data-target="#collapse{{$qlist->id}}" aria-expanded="false" aria-controls="collapse{{$qlist->id}}">
                   {{$qlist->question ?: 'DB error!!!'}} 
                 </td>
-                <td style="width:80px;">
+                <td style="width:25%;">
+                  {!!Form::open(['action'=>['QuestionController@destroy',$qlist->id],'method'=>'POST'])!!} 
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-myid="{{$qlist->id}}"
+                  data-target="#questionmodal">Нэмэх</button>
+                  {{-- <a href="/question/answer/{{$qlist->id}}/" class="btn btn-info">Нэмэх</a> --}}
+                  <a href="/question/{{$qlist->id}}/edit" class="btn btn-warning">Засах</a>  
+                  {{-- <img src='{{ URL::to('/') }}/images/add.png' alt="Нэмэх" data-toggle="modal" data-target="#questionmodal">
+                  <img src='{{ URL::to('/') }}/images/edit.png' alt="Засах"> --}}
+                  {{Form::hidden('_method','DELETE')}}
+                  {{Form::submit('Усатгах',['class'=>'btn btn-danger','onclick'=>'return myFunction();'])}}
+                  {{-- <img src='{{ URL::to('/') }}/images/delete.png' alt="Усатгах" onclick="return myFunction();"> --}}
+                  {!!Form::close()!!}
                   
-                  <img src='{{ URL::to('/') }}/images/add.png' alt="Нэмэх" data-toggle="modal" data-target="#questionmodal">
-                  <img src='{{ URL::to('/') }}/images/edit.png' alt="Засах"></td>
+                </td>
               </tr>
             </table>
           </div>
@@ -100,6 +110,7 @@
               </button>
             </div>
             {!! Form::open(['action'=>'QuestionController@store','method'=>'POST', 'enctype'=>'multipart/form-data'])!!}
+            {{csrf_field()}}
             <div class="modal-body">
                 <input type="hidden" id="test_id" name="test_id" value="{{$test->id}}">
                 <div class="form-group">
@@ -145,20 +156,45 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Хариулт нэмэх</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        {!! Form::open(['action'=>'AnswerController@store','method'=>'POST', 'enctype'=>'multipart/form-data'])!!}
+        {{csrf_field()}}
+        
         <div class="modal-body">
-          ...
+          <div class="form-group">
+            <input type="hidden" id="question_id" name="question_id">
+            <label for="answer">Хариулт</label>
+            <input type="text" class="form-control" name="answer" id="answer">
+            <input type="checkbox" name="correct" value="1"> Зөв хариулт мөн<br>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
         </div>
+        {{Form::close()}}
       </div>
     </div>
   </div>
+  <script>
+    function myFunction() {
+        if(!confirm("Are You Sure to delete this"))
+        event.preventDefault();
+    }
+</script>
+    <script>
+        $('#questionmodal').on('show.bs.modal', function (event) {
+          console.log("modal opened")
+          var button = $(event.relatedTarget) 
+          var answer = button.data('myid') 
+          var modal = $(this)
+          modal.find('.modal-body #question_id').val(answer)
+          
+        })
+ </script>
 @endsection
 
