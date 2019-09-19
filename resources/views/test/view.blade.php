@@ -85,6 +85,16 @@
                         {{$alist->answer}} 
                       </td>    
                     @endif
+                    <td style="width:20%;">
+                      {!!Form::open(['action'=>['AnswerController@destroy',$alist->id],'method'=>'POST'])!!} 
+ 
+                      <a href="/answer/{{$alist->id}}/edit" class="btn btn-warning">Засах</a>  
+                      {{Form::hidden('_method','DELETE')}}
+                      {{Form::submit('Усатгах',['class'=>'btn btn-danger','onclick'=>'return myFunction();'])}}
+                      {{-- <img src='{{ URL::to('/') }}/images/delete.png' alt="Усатгах" onclick="return myFunction();"> --}}
+                      {!!Form::close()!!}
+                      
+                    </td>
                   </tr>
                 </table>
                 <?php $pos1++; ?>
@@ -151,7 +161,7 @@
         </div>
       </div>
       
-      <!-- Question Modal -->
+      <!-- Question Modal asuultad hariult nemdeg modal -->
 <div class="modal fade" id="questionmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

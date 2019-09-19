@@ -133,7 +133,7 @@ class QuestionController extends Controller
         //
         $question = Question::find($id);
         $question->answer()->delete();
-        $question->delete();
+        $question->delete(); 
         
         return back()->with('success','Асуулт хасагдлаа');
 //        redirect('/admin/test')->with('success','Test deleted');

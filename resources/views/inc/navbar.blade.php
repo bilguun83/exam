@@ -34,7 +34,7 @@
                   <a class="nav-link" href="/admin/test">Шалгалтууд<span class="sr-only">(current)</span></a>
               </li>
               <li >
-                  <a class="nav-link" href="/admin/student">Шалгуулагчид<span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="/admin/student">Хэрэглэгчид<span class="sr-only">(current)</span></a>
               </li>
               <li >
                 <a class="nav-link" href="/admin/section">Хэсэгүүд<span class="sr-only">(current)</span></a>

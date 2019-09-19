@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Answer;
+use App\Question;
 use Illuminate\Http\Request;
 use DB;
 
@@ -12,6 +13,10 @@ class AnswerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('teacher');
+    }
     public function index()
     {
         //
@@ -83,6 +88,8 @@ class AnswerController extends Controller
     public function edit($id)
     {
         //
+        $answer =Answer::find($id);
+        return view('answer.edit')->with('answer',$answer);
     }
 
     /**
@@ -95,6 +102,28 @@ class AnswerController extends Controller
     public function update(Request $request, $id)
     {
         //
+         $this->validate($request, [
+            'answer'=>'required',
+            ]);
+            
+            //create test
+        $answer = Answer::find($id);
+        $answer->answer =$request->input('answer');
+            // echo $request->correct;
+        if ($request->correct==1){
+            DB::table('answers')
+            ->where('question_id', $answer->question_id)
+            ->update(['score' => 0]);
+            $answer->score=1;
+        }
+        else{
+             $answer->score=0;
+            }
+        $answer->save();    
+        $question=Question::find($answer->question_id);
+        
+        return redirect('/admin/test/'.$question->test_id.'/view')->with('success','Answer updated');
+// //         return back()->with('success','Answer updated');
     }
 
     /**
@@ -106,6 +135,10 @@ class AnswerController extends Controller
     public function destroy($id)
     {
         //
+        $answer = Answer::find($id);
+        $answer->delete();
+        
+        return back()->with('success','Хариулт хасагдлаа');
     }
     public function addanswer($id)
     {
