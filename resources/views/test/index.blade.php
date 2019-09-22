@@ -27,7 +27,7 @@
                 <tr>
 
                     <td>
-                    <a href='/admin/test/{{$test->id}}'>{{$test->name}}</a>
+                    <a href='/admin/test/{{$test->id}}/view'>{{$test->name}}</a>
                     </td>
                     <td>
                         {{$test->created_at}}

@@ -28,7 +28,7 @@
                   </div>
                 </li> --}}
               <li >
-                  <a class="nav-link" href="/admin/student">Хүсэлтүүд<span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="/student/request">Хүсэлтүүд<span class="sr-only">(current)</span></a>
               </li>
                 <li >
                   <a class="nav-link" href="/admin/test">Шалгалтууд<span class="sr-only">(current)</span></a>

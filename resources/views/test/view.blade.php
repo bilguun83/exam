@@ -32,7 +32,7 @@
 
 @section('content')
 @csrf
-  <h1>Шалгалтын дэлгэрэнгүй</h1>
+  <h1>"{{$test->name}}" шалгалтын дэлгэрэнгүй</h1>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">
     Асуулт нэмэх
   </button>
@@ -54,13 +54,9 @@
                   {!!Form::open(['action'=>['QuestionController@destroy',$qlist->id],'method'=>'POST'])!!} 
                   <button type="button" class="btn btn-success" data-toggle="modal" data-myid="{{$qlist->id}}"
                   data-target="#questionmodal">Нэмэх</button>
-                  {{-- <a href="/question/answer/{{$qlist->id}}/" class="btn btn-info">Нэмэх</a> --}}
                   <a href="/question/{{$qlist->id}}/edit" class="btn btn-warning">Засах</a>  
-                  {{-- <img src='{{ URL::to('/') }}/images/add.png' alt="Нэмэх" data-toggle="modal" data-target="#questionmodal">
-                  <img src='{{ URL::to('/') }}/images/edit.png' alt="Засах"> --}}
                   {{Form::hidden('_method','DELETE')}}
                   {{Form::submit('Усатгах',['class'=>'btn btn-danger','onclick'=>'return myFunction();'])}}
-                  {{-- <img src='{{ URL::to('/') }}/images/delete.png' alt="Усатгах" onclick="return myFunction();"> --}}
                   {!!Form::close()!!}
                   
                 </td>

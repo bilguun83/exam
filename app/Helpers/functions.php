@@ -1,5 +1,7 @@
 <?php
 use App\Section;
+use App\Test;
+
 
 function global_function_example($str)
 {
@@ -20,4 +22,54 @@ function section_select($id){
              }
    $data.="</select>";
    return $data;          
+}
+
+function alltest(){
+
+   $tests = Test::all();
+   $data = "
+   <input type='text' name='test_name' class='form-control'><br>";
+   $data.=section_select(1);
+   $data.="<table id='table' class='table table-striped table-bordered' cellspacing='0' width='100%'>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Нэр</th>
+                        <th>Max</th>
+                        <th>Тоо</th>
+                    </tr>
+                </thead>
+                <tbody>";
+
+                foreach ($tests as $test){
+                $data.="<tr>
+
+                    <td>
+                    $test->id
+                    </td>
+                    <td>
+                     <a href='/admin/test/$test->id/view' target='_blank'>$test->name</a>
+                    </td>
+                    <td>
+                        {$test->question->count()}
+                    </td>
+                    <td>
+                     <input type='text' name='number[$test->id]'>
+                    </td>
+                     </tr>";
+                 }
+            
+            $data.="</tbody>
+           
+            <tfoot>
+                <tr>
+                  <th>ID</th>
+                        <th>Нэр</th>
+                        <th>MAX</th>
+                        <th>Тоо</th>
+                </tr>
+            </tfoot>
+        </table>";
+
+ return $data;          
 }

@@ -42,12 +42,7 @@ class TestController extends Controller
             ]);
     }
 
-    // public function sections()
-    // {
-    //     return $this->hasOne('App\Section');
-    // }
-
-    /**
+     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

@@ -36,3 +36,5 @@ Route::resource('/answer','AnswerController');
 Route::get('request/{id}', 'ExamController@request');
 Route::get('/question/answer/{test}', 'AnswerController@addanswer');
 //Route::post('/admin/answer/{id}', 'QuestionController@destroy');
+Route::get('/student/request','StudentController@request');
+Route::post('/student/test','ExamController@makeExam');

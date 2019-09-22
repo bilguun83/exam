@@ -23,6 +23,13 @@ class StudentController extends Controller
         return view("student.index")->with('students',$students); 
     }
 
+    public function request()
+    {
+        //
+        $students = User::where('status','2')->orderBy('fname','asc')->paginate(10);
+        return view("student.request")->with('students',$students); 
+    }
+
     /**
      * Show the form for creating a new resource.
      *
