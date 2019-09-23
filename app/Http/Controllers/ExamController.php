@@ -35,30 +35,33 @@ class ExamController extends Controller
             ]);
         echo "Your ID is:".$request->user_id;
         echo "<br>TEst_name:".$request->test_name;
-        echo "<br>TEst:".$request->number[6];
-
-        $stest = new Stest;
-        $stest->user_id =$request->input('user_id');
-        $stest->section_id =$request->input('section_id');
-        $stest->name =$request->input('test_name');
         
-        $stest->save();   
-        //echo "Selected RAdio is:".$request->correct."<br>";
-    // $number = count($request["answer"]);
+        
+//User Test Creation is here
+        // $stest = new Stest;
+        // $stest->user_id =$request->input('user_id');
+        // $stest->section_id =$request->input('section_id');
+        // $stest->name =$request->input('test_name');
+        // $stest->save();
 
-    // if($number > 0)  
-    // {  
-    //   for($i=0; $i<$number; $i++)  
-    //   {  
-    //        if($request["answer"][$i] != '')  
-    //        {  
+        
+    $number = count($request["number"]);
+
+    if($number > 0)  
+    {  
+      for($i=0; $i<$number; $i++)  
+      {  
+           if($request["number"][$i] != '')  
+           {  
                
-    //         $answer = new Answer;
-    //         $answer->answer =$request["answer"][$i];
-    //         $answer->question_id =$question->id;
-    //         if ($i==0)
-    //         $answer->score =1;
-    //         $answer->save();   
-
+            echo "<br>".$i." data:".$request["number"][$i]." ID:".$request["testx"][$i];
+            // $answer = new Answer;
+            // $answer->answer =$request["answer"][$i];
+            // $answer->question_id =$question->id;
+            // if ($i==0)
+            // $answer->score =1;
+            // $answer->save();   
+           }
      }
+    }}
 }
