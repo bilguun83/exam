@@ -47,13 +47,18 @@
                         {{$student->email}}
                     </td>
                     <td>
-                        {{$student->group_id}}
+                        {{display_group($student->group_id)}}
                     </td>
                     <td>
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-myid="{{$student->id}}"
-                                    data-target="#requestmodal">Cорил +</button>
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-myid="{{$student->id}}"
-                                            data-target="#requestmodal">Cорил 1</button>
+                        @if ($student->status==2)
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-myid="{{$student->id}}"
+                                data-target="#requestmodal">Cорил +</button>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-myid="{{$student->id}}"
+                                        data-target="#requestmodal">Cорил 1</button>
+                        @else
+                        <button type="button" class="btn btn-danger">Сорил дуусгах</button>
+                        @endif
+
                     </td>
                 </tr>
             @endforeach

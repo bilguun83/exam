@@ -6,7 +6,7 @@
         
         
 
-        <a href="/admin/test/create" class="btn btn-primary">Шалгалт нэмэх</a>
+        <a href="/admin/test/create" class="btn btn-primary">Тест нэмэх</a>
         {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Modal-ээс нэмэх</button> --}}
   <br><br>
   @if (count($tests)>0)
@@ -15,10 +15,10 @@
                 <thead>
                     <tr>
                         <th>Нэр</th>
-                        <th>Шалгалт үүссэн огноо</th>
-                        <th>Шалгалт update огноо</th>
-                        <th>Status</th>
-                        <th>Section_id</th>
+                        <th>Тест үүссэн огноо</th>
+                        <th>Тест update огноо</th>
+                        {{-- <th>Status</th> --}}
+                        <th>Хэсэг</th>
                         <th style="width:200px;">Үйлдэл</th>
                     </tr>
                 </thead>
@@ -35,9 +35,9 @@
                     <td>
                         {{$test->updated_at}}
                     </td>
-                    <td>
+                    {{-- <td>
                         {{$test->status}}
-                    </td>
+                    </td> --}}
                     <td>
                             
                         {{App\Section::find($test->section_id)->name}}
@@ -67,10 +67,10 @@
                 <tr>
 
                         <th>Нэр</th>
-                        <th>Шалгалт үүссэн огноо</th>
-                        <th>Шалгалт update огноо</th>
-                        <th>Status</th>
-                        <th>Section_id</th>
+                        <th>Тест үүссэн огноо</th>
+                        <th>Тест update огноо</th>
+                        {{-- <th>Status</th> --}}
+                        <th>Хэсэг</th>
                         <th style="width:200px;">Үйлдэл</th>
                 </tr>
             </tfoot>

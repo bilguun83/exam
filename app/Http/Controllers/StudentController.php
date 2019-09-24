@@ -26,7 +26,7 @@ class StudentController extends Controller
     public function request()
     {
         //
-        $students = User::where('status','2')->orderBy('fname','asc')->paginate(10);
+        $students = User::where('status','<>',1)->orderBy('fname','asc')->paginate(10);
         return view("student.request")->with('students',$students); 
     }
 

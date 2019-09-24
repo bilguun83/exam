@@ -10,9 +10,9 @@
                 <label for="answer">Хариулт</label>
                 <input type="text" class="form-control" name="answer" id="answer" value="{{$answer->answer}}">
                 @if ($answer->score==1)
-                <input type="checkbox" name="correct" value="1" checked> Зөв хариулт мөн<br>        
+                <input type="checkbox" name="correct" checked> Зөв хариулт мөн<br>        
                 @else
-                <input type="checkbox" name="correct" value="1"> Зөв хариулт мөн<br>        
+                <input type="checkbox" name="correct"> Зөв хариулт мөн<br>        
                 @endif
             
               </div>

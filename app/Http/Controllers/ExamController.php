@@ -5,7 +5,10 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Test;
 use App\Stest;
-
+use App\Question;
+use App\Squestion;
+use App\Answer;
+use App\Sanswer;
 class ExamController extends Controller
 {
     //
@@ -33,16 +36,16 @@ class ExamController extends Controller
             'user_id'=>'required',
             'test_name'=>'required',
             ]);
-        echo "Your ID is:".$request->user_id;
-        echo "<br>TEst_name:".$request->test_name;
+        // echo "Your ID is:".$request->user_id;
+        // echo "<br>TEst_name:".$request->test_name;
         
         
 //User Test Creation is here
-        // $stest = new Stest;
-        // $stest->user_id =$request->input('user_id');
-        // $stest->section_id =$request->input('section_id');
-        // $stest->name =$request->input('test_name');
-        // $stest->save();
+        $stest = new Stest;
+        $stest->user_id =$request->input('user_id');
+        $stest->section_id =$request->input('section_id');
+        $stest->name =$request->input('test_name');
+        $stest->save();
 
         
     $number = count($request["number"]);
@@ -54,14 +57,34 @@ class ExamController extends Controller
            if($request["number"][$i] != '')  
            {  
                
-            echo "<br>".$i." data:".$request["number"][$i]." ID:".$request["testx"][$i];
-            // $answer = new Answer;
-            // $answer->answer =$request["answer"][$i];
-            // $answer->question_id =$question->id;
-            // if ($i==0)
-            // $answer->score =1;
-            // $answer->save();   
+     //       echo "<br>".$i." data:".$request["number"][$i]." ID:".$request["testx"][$i];
+            
+            $questions= Question::select('id','question','level')->where('test_id','=',$request["testx"][$i])->inRandomOrder()->get()->random($request["number"][$i]); 
+            foreach ($questions as $question)
+            {
+                $squestion = new Squestion;
+                $squestion->stest_id =$stest->id;
+                $squestion->question =$question->question;
+                $squestion->level =$question->level;
+                $squestion->save();
+                $answers= Answer::select('answer','score')->where('question_id','=',$question->id)->inRandomOrder()->get();
+                foreach ($answers as $answer){
+                    $sanswer= new Sanswer;
+                    $sanswer->squestion_id=$squestion->id;
+                    $sanswer->answer=$answer->answer;
+                    $sanswer->score=$answer->score;
+                    $sanswer->save();
+                }
+                echo "<br>Question:".$question."<br>Answer:".$answers;
+            }
+            //Table::select('name','surname')->where('id', 1)->get();
+            //echo '<br>TEST is:'.$questions;
            }
      }
-    }}
+    }
+    $student = User::find($stest->user_id);
+        
+    $student->status =3;
+    $student->save();
+}
 }

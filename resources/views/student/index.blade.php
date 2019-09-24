@@ -22,7 +22,12 @@
                 </thead>
                 <tbody>
             @foreach ($students as $student)
-                <tr>
+                @if ($student->group_id==2)
+                <tr class="table-primary">
+                @else
+                <tr>    
+                @endif
+                
 
                     <td>
                     {{-- <a href='/admin/section/{{$section->id}}'>{{$section->name}}</a> --}}
@@ -47,7 +52,7 @@
                         {{$student->email}}
                     </td>
                     <td>
-                        {{$student->group_id}}
+                        {{display_group($student->group_id)}}
                     </td>
                     <td>
                        

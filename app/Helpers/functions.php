@@ -23,7 +23,10 @@ function section_select($id){
    $data.="</select>";
    return $data;          
 }
-
+function display_group($id){
+    $section = Section::find($id);
+    return $section->name;
+}
 function alltest(){
 
    $tests = Test::all();

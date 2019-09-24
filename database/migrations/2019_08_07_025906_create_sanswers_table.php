@@ -15,7 +15,6 @@ class CreateSanswersTable extends Migration
     {
         Schema::create('sanswers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('stest_id');
             $table->integer('squestion_id'); 
             $table->text('answer');
             $table->integer('score')->default(0);

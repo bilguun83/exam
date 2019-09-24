@@ -152,7 +152,10 @@ class TestController extends Controller
     {
         //
      //   echo $id;
+     //$students = User::where('status','2')->orderBy('fname','asc')->paginate(10);
+//     $test =Test::where('status','2');
      $test =Test::find($id);
+     
     return view('test.view')->with('test',$test);
     }
 }

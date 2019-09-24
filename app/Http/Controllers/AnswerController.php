@@ -106,23 +106,28 @@ class AnswerController extends Controller
             'answer'=>'required',
             ]);
             
-            //create test
+        
         $answer = Answer::find($id);
         $answer->answer =$request->input('answer');
-            // echo $request->correct;
-        if ($request->correct==1){
+
+        if ($request->correct==true){
             DB::table('answers')
-            ->where('question_id', $answer->question_id)
+            ->where([
+                    ['question_id','=', $answer->question_id],
+                    ['id','<>',$answer->id],
+                    ])
             ->update(['score' => 0]);
+            
             $answer->score=1;
         }
         else{
              $answer->score=0;
             }
+            //echo $request->correct;
         $answer->save();    
         $question=Question::find($answer->question_id);
         
-        return redirect('/admin/test/'.$question->test_id.'/view')->with('success','Answer updated');
+       return redirect('/admin/test/'.$question->test_id.'/view')->with('success','Answer updated');
 // //         return back()->with('success','Answer updated');
     }
 
