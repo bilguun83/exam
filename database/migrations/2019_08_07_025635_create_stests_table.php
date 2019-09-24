@@ -20,6 +20,7 @@ class CreateSTestsTable extends Migration
             $table->string('name');
             $table->integer('total')->default(0);  
             $table->integer('score')->default(0);
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

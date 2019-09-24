@@ -49,7 +49,7 @@ class ExamController extends Controller
 
         
     $number = count($request["number"]);
-
+$total=0;
     if($number > 0)  
     {  
       for($i=0; $i<$number; $i++)  
@@ -59,9 +59,10 @@ class ExamController extends Controller
                
      //       echo "<br>".$i." data:".$request["number"][$i]." ID:".$request["testx"][$i];
             
-            $questions= Question::select('id','question','level')->where('test_id','=',$request["testx"][$i])->inRandomOrder()->get()->random($request["number"][$i]); 
+            $questions= Question::select('id','question','level')->where('test_id','=',$request["testx"][$i])->inRandomOrder()->limit($request["number"][$i])->get(); 
             foreach ($questions as $question)
-            {
+            {   
+                $total++;
                 $squestion = new Squestion;
                 $squestion->stest_id =$stest->id;
                 $squestion->question =$question->question;
@@ -82,6 +83,10 @@ class ExamController extends Controller
            }
      }
     }
+    //echo "<br>Total:".$total;
+    $stest->total=$total;
+    $stest->save();
+    
     $student = User::find($stest->user_id);
         
     $student->status =3;
