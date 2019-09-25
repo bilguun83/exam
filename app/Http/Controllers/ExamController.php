@@ -85,6 +85,7 @@ $total=0;
     }
     //echo "<br>Total:".$total;
     $stest->total=$total;
+    $stest->status=1;
     $stest->save();
     
     $student = User::find($stest->user_id);

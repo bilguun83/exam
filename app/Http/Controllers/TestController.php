@@ -155,7 +155,6 @@ class TestController extends Controller
      //$students = User::where('status','2')->orderBy('fname','asc')->paginate(10);
 //     $test =Test::where('status','2');
      $test =Test::find($id);
-     
     return view('test.view')->with('test',$test);
     }
 }
