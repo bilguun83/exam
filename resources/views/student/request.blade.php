@@ -56,7 +56,13 @@
                         <button type="button" class="btn btn-info" data-toggle="modal" data-myid="{{$student->id}}"
                                         data-target="#requestmodal">Cорил 1</button>
                         @else
-                        <button type="button" class="btn btn-danger">Сорил дуусгах</button>
+                            @if ($student->status==3)
+                                <a href="../request1/{{$student->id}}" class="btn btn-info">Дуусгах</a>    
+                            @else
+                                <a href="../request2/{{$student->id}}" class="btn btn-danger">Гаргах</a>    
+                            @endif
+                        
+                        {{-- <button type="button" class="btn btn-danger">Сорил дуусгах</button> --}}
                         @endif
 
                     </td>
@@ -89,7 +95,7 @@
         {{$students->links()}}
 
     @else
-        <h1>User table empty and why are you here!!!</h1>
+        <h1>Сорил өгөх хүсэлт алга</h1>
     @endif
 
 

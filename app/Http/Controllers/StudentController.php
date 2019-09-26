@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use App\Stest;
 
 class StudentController extends Controller
 {
@@ -124,4 +125,13 @@ class StudentController extends Controller
     {
         //
     }
+
+    //SHALGALTIIN tuuh
+    public function history()
+    {
+        //
+        $stests = Stest::where('status','=',3)->orderBy('updated_at','asc')->paginate(10);
+        return view("student.history")->with('stests',$stests); 
+    }
+
 }

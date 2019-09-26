@@ -113,4 +113,5 @@ class SectionController extends Controller
         $section->delete();
         return redirect('/admin/section')->with('success','Хэсгийг усатгав');
     }
+
 }
