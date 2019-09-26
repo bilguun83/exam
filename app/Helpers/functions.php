@@ -284,7 +284,7 @@ function display_print($user_id,$stest_id,$choice){
     </tr>
     </table>
     ";
-    $data.='<pre style="font-family:Arial;">
+    $data.='<pre style="font-family:Arial;border:None">
      <b>1. Овог:</b> '.$user->lname.'        <b>Нэр:</b> '.$user->fname.'
      <b>2. Төгссөн сургууль, курс, он:</b> '.$user->school.'
      <b>3. Мэргэжил:</b> '.$user->field.'
@@ -299,15 +299,16 @@ function display_print($user_id,$stest_id,$choice){
     //  <b></b> '.$user->.'
     //  <b></b> '.$user->.'
     $data.=$data1;
-$data.='<pre style="font-family:Arial;">
+$data.='<pre style="font-family:Arial; border:None">
 <b>Шалгалтын дүн: </b>'.($stest->score*100)/$stest->total.'%  ('.$stest->score.'/'.$stest->total.')';
 $data.='
 <b>6.2 Ам шалгалтын үнэлгээ</b>
 Шалгалтын дүн: . . . . . . . .
 <b>6.3. Ажлын байран дахь шалгалтын үнэлгээ</b>
 Шалгалтын дүн:      Хангалттай      Хангалтгүй
-<b>7. Шалгалтын мэргэжлийн комиссын дүгнэлт:</b><span class="border-bottom">                                                                                                                                                                                                                                          
-                                                                                                                                                                                                                                                                                                                            </span>
+<b>7. Шалгалтын мэргэжлийн комиссын дүгнэлт:</b>. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+
 <b>8. Шалгуулагчийн гарын үсэг:</b><span class="border-bottom">                                 </span>
 <b>9. Шалгалт авсан хугацаа:</b>
 <table>
@@ -336,7 +337,7 @@ $data.='
 </pre>';
 if($choice!=5){
     $data.='
-<pre>
+<pre style="border:none">
 
 <table>
 <tr>
