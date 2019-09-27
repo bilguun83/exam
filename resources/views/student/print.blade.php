@@ -2,8 +2,9 @@
 
 @section('content')
 
-
+<div style="margin-left: 50px;">
      {!!display_print($user->id,$stest->id,$choice)!!}
+</div>
 
     
 

@@ -63,7 +63,8 @@
         {{$sections->links()}}
 
     @else
-        <h1>Section alga</h1>
+        <h1>Хэсэг алга</h1>
+        <a href="/admin/section/create" class="btn btn-primary">Хэсэг нэмэх</a>
     @endif
 @endsection
 
