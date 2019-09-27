@@ -38,7 +38,7 @@ function display_userinfo($id){
 }
 function alltest(){
 
-   $tests = Test::all();
+   $tests = Test::all()->sortByDesc("section_id");
    $data = "
    <input type='text' name='test_name' class='form-control'><br>";
    $data.=section_select(1);

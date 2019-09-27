@@ -32,7 +32,7 @@ class TestController extends Controller
             //$tests= Test::orderBy('name','asc')->take(1)->get();
             //$tests= Test::orderBy('name','asc')->get();
             
-            $tests = Test::orderBy('id','desc')->paginate(10);
+            $tests = Test::orderBy('section_id','desc')->paginate(10);
             $sections = Section::all();
 
             // return view("test.index")->with('tests',$tests)->with('sections',$sections); 
